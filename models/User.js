@@ -8,22 +8,22 @@ const userSchema = mongoose.Schema({
         type:String,
         trim:true,
         //빈칸없애주는 트림
-        unique:1,
+        unique:1
     },
     password:{
         type:String,
-        maxlength: 50,
+        maxlength: 50
     },
     role:{
         type: Number,
-        default: 0,
+        default: 0
     },
     image:String,
     token:{
-        type:String,
+        type:String
     },
     tokenExp:{
-        type: Number,
+        type: Number
     },
 })
 const User = mongoose.model('User', userSchema)
