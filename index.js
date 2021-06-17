@@ -15,9 +15,13 @@ app.use(bodyParser.json());
 
 const mongoose = require('mongoose')
 mongoose.connect(config.mongoURI, {
-  useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true, useFindAndModify: false
+  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err))
+// mongoose.connect(config.mongoURI, {
+//   useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true, useFindAndModify: false
+// }).then(() => console.log('MongoDB Connected...'))
+//   .catch(err => console.log(err))
 
 
 app.get('/', (req, res) => {
@@ -27,7 +31,7 @@ app.post('/register', (req, res) => {
   //회원 가입 할때 필요한 정보들을 client에서 가져오면
   //그것들을 데이터 베이스에 넣어준다.
   const user = new User(req.body)
-
+  //여기서 세이브하기전에 암호화해줘야함.
   user.save((err, userInfo) => {
     if (err) return res.json({ success: false, err });
     return res.status(200).json({
