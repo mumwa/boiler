@@ -1,11 +1,11 @@
 import React from 'react'
 
-function NavBar() {
+function Footer() {
     return (
         <div>
-            네비바입니다
+            
         </div>
     )
 }
 
-export default NavBar
+export default Footer
